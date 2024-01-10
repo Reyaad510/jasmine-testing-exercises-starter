@@ -57,9 +57,13 @@ function calculateMonthlyPayment(values) {
     (values.amount * monthlyRate) / 1 -
     Math.pow(1 + monthlyRate, -n)
   ).toFixed(2);
-  console.log(monthlyPayment);
+  updateMonthly(monthlyPayment.toString());
 }
 
 // Given a string representing the monthly payment value,
 // update the UI to show the value.
-function updateMonthly(monthly) {}
+function updateMonthly(monthly) {
+  const monthlyPaymentUI = document.querySelector("#monthly-payment");
+
+  monthlyPaymentUI.innerText = monthly;
+}
