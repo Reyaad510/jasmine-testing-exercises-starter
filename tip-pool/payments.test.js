@@ -13,11 +13,19 @@ describe("Payments test(with setup and teardown", function () {
     expect(allPayments["payment1"].tipPercent).toEqual(10);
   });
 
-  it("should not work if no bill/tip amounts not filled", function () {
+  it("should not create current Payment if no bill/tip amounts not filled", function () {
     billAmtInput.value = "";
     tipAmtInput.value = "";
     submitPaymentInfo();
     expect(Object.keys(allPayments).length).toEqual(0);
+  });
+
+  it("should append a new table with bill total, tip amount, and tip percent", function () {
+    submitPaymentInfo();
+    let paymentUI = document.querySelectorAll("#paymentTable tbody tr td");
+    expect(paymentUI[0].innerText).toEqual("$20");
+    expect(paymentUI[1].innerText).toEqual("$2");
+    expect(paymentUI[2].innerText).toEqual("10%");
   });
 
   afterEach(function () {
