@@ -12,4 +12,16 @@ describe("Payments test(with setup and teardown", function () {
     expect(allPayments["payment1"].tipAmt).toEqual("2");
     expect(allPayments["payment1"].tipPercent).toEqual(10);
   });
+
+  afterEach(function () {
+    //tear down logic
+    paymentId = 0;
+    allPayments = {};
+    paymentTbody.innerHTML = "";
+    billAmtInput.value = "";
+    tipAmtInput.value = "";
+    summaryTds[0].innerHTML = "";
+    summaryTds[1].innerHTML = "";
+    summaryTds[2].innerHTML = "";
+  });
 });
