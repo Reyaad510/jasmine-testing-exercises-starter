@@ -13,6 +13,13 @@ describe("Payments test(with setup and teardown", function () {
     expect(allPayments["payment1"].tipPercent).toEqual(10);
   });
 
+  it("should not work if no bill/tip amounts not filled", function () {
+    billAmtInput.value = "";
+    tipAmtInput.value = "";
+    submitPaymentInfo();
+    expect(Object.keys(allPayments).length).toEqual(0);
+  });
+
   afterEach(function () {
     //tear down logic
     paymentId = 0;
